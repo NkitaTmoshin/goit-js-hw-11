@@ -1,4 +1,4 @@
-import { fetchImages } from './js/fetchImages';
+import { fetchImages } from '../js/fetchImages';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
@@ -9,6 +9,15 @@ const gallery = document.querySelector('.gallery');
 const btnLoadMore = document.querySelector('.load-more');
 let gallerySimpleLightbox = new SimpleLightbox('.gallery a');
 
+// const { height: cardHeight } = document
+//   .querySelector('.gallery')
+//   .firstElementChild.getBoundingClientRect();
+
+// window.scrollBy({
+//   top: cardHeight * 2,
+
+//   behavior: 'smooth',
+// });
 
 btnLoadMore.style.display = 'none';
 
@@ -61,7 +70,9 @@ function renderImageList(images) {
     .map(image => {
       console.log('img', image);
       return `<div class="photo-card">
+
        <a href="${image.largeImageURL}"><img class="photo" src="${image.webformatURL}" alt="${image.tags}" title="${image.tags}" loading="lazy"/></a>
+
         <div class="info">
            <p class="info-item">
     <b>Likes</b> <span class="info-item-api"> ${image.likes} </span>
